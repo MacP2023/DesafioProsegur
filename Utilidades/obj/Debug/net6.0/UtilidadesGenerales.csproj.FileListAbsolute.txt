@@ -1,0 +1,11 @@
+C:\Pruebas\Utilidades\bin\Debug\net6.0\UtilidadesGenerales.deps.json
+C:\Pruebas\Utilidades\bin\Debug\net6.0\UtilidadesGenerales.dll
+C:\Pruebas\Utilidades\bin\Debug\net6.0\UtilidadesGenerales.pdb
+C:\Pruebas\Utilidades\obj\Debug\net6.0\UtilidadesGenerales.GeneratedMSBuildEditorConfig.editorconfig
+C:\Pruebas\Utilidades\obj\Debug\net6.0\UtilidadesGenerales.AssemblyInfoInputs.cache
+C:\Pruebas\Utilidades\obj\Debug\net6.0\UtilidadesGenerales.AssemblyInfo.cs
+C:\Pruebas\Utilidades\obj\Debug\net6.0\UtilidadesGenerales.csproj.CoreCompileInputs.cache
+C:\Pruebas\Utilidades\obj\Debug\net6.0\UtilidadesGenerales.dll
+C:\Pruebas\Utilidades\obj\Debug\net6.0\refint\UtilidadesGenerales.dll
+C:\Pruebas\Utilidades\obj\Debug\net6.0\UtilidadesGenerales.pdb
+C:\Pruebas\Utilidades\obj\Debug\net6.0\ref\UtilidadesGenerales.dll

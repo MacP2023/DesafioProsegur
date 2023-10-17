@@ -1,0 +1,78 @@
+﻿@model GestionDePedidosSB.Models.ModUsuario
+
+@{
+    Layout = null;
+}
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Titulo"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+</head>
+<body>
+    <div class="container">
+      
+        <div class="m-0 vh-100 justify-content-center align-items-center">
+           
+            <hr />
+            <div class="col-12 col-xl-4 col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Iniciar Sesion
+                    </div>
+                    <div class="card-body justify-content-center align-items-center">
+                        <form asp-controller="Home" asp-action="GuardarUsuario">
+                            <div class="mb-2">
+                             
+                                <input type="text" class="form-control mb-3" placeholder="Nombre" asp-for="Nombre" required />
+                            </div>
+                            <div class="mb-2">
+                                <input type="text" class="form-control mb-3" placeholder="Apellido" asp-for="Apellido" required />
+                            </div>
+                            <div class="mb-2">
+                                <input type="text" class="form-control mb-3" placeholder="DNI" asp-for="DNI"  />
+                            </div>
+                            <div class="mb-2">
+                                <select asp-items="@ViewBag.Provincias"  asp-for=Provincia required></select>
+                               
+                            </div>
+                            
+                            <div class="mb-2">
+                                <input type="text" class="form-control mb-3" placeholder="Direccion" asp-for="Direccion" />
+                            </div>
+                            <div class="mb-2">
+                                <input type="text" class="form-control mb-3" placeholder="Celular" asp-for="Celular" />
+                            </div>
+                            
+                            <div class="mb-2">
+                                <input type="text" class="form-control mb-3" placeholder="Usuario" asp-for="UserName" />
+                            </div>
+                            <div class="mb-2">
+                                <input type="password" class="form-control mb-3" placeholder="Clave" asp-for="Clave" />
+                            </div>
+                            <div class="d-grid gap-2 mb-4">
+                                <button class="btn btn-primary" type="submit">Registrar</button>
+                            </div>
+                            @if (ViewData["Message"] != null)
+                            {
+                                <div class="card-group">
+                                    <div class="alert alert-danger" role="alert">
+                                        @ViewData["Message"]
+                                    </div>
+                                </div>
+                            }
+                            Ya se encuentra registrado<a href="@Url.Action("InicioSesion","Home")">Iniciar Sesion</a>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

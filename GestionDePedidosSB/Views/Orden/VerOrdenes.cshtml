@@ -1,0 +1,91 @@
+﻿
+@* @{
+    Layout = null;
+}
+ *@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Listado de Ordenes</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+</head>
+<body>
+    <div class="container mt-auto pt5">
+        <div class="row justify-content-center">
+
+            <div class="card">
+                <div class="card-header">
+                    Ordenes Registradas
+                </div>
+                <div class="card-body">
+                   @*  <form asp-controller="Orden" asp-action="VerDetalleOrden"> *@
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="form-label-sm" id="lblUsuario"> Nro Orden</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="form-label-sm" id="lblUsuario"> Fecha Orden</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="form-label-sm" id="lblUsuario"> Cliente</label>
+                            </div>                        
+
+                        </div>
+                        <hr />
+                        <div class="row">
+
+                            @if (ViewBag.ListadoOrdenRegistradas.Count > 0)
+                            {
+                            @for (var item = 0; item < ViewBag.ListadoOrdenRegistradas.Count; item++)
+                                {
+                                var orden = ViewBag.ListadoOrdenRegistradas[item];
+                                    <div class="row">
+
+                                        <input type="hidden" id="hidEstadoID[@item]" name="EstadoID" value="@orden.EstadoID" />
+                                        <div class="col-sm-2">
+                                         @orden.OrdenID 
+
+                                        </div>
+                                        <div class="col-sm-2">
+                                          @orden.FechaOrden
+                                        </div>
+                                        <div class="col-sm-2">
+                                           @orden.NombreCliente
+
+                                        </div>
+                                        <div class="col-sm-2">
+                                            @orden.Estado
+
+                                        </div>
+                                        <div class="col-sm-2">
+                                        @if (@orden.EstadoID == 2 && ViewBag.Rol==2)
+                                            {
+                                            <a href="/Orden/VerDetalleOrden?OrdenID=@orden.OrdenID" class="btn-secondary">Facturar</a>
+                                            }
+                                        </div>
+                                        <div class="col-sm-2">
+                                            @if (@orden.EstadoID != 2)
+                                            {
+                                            <a href="@Url.Action("VerDetalleOrden", "Orden", new { ordenid = orden.OrdenID })" class="btn-secondary">Ver Detalle</a>
+                                            @* <a href="/Orden/VerDetalleOrden?OrdenID=@orden.OrdenID" class="btn-secondary">Ver Detalle</a> *@
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                     
+                   
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

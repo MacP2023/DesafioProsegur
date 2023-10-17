@@ -1,0 +1,95 @@
+﻿@model GestionDePedidosSB.Models.Orden
+
+@{
+    var orden = ViewBag.Orden;
+    // Layout = null;
+} 
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detalle de la Orden</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+</head>
+<body>
+    <div class="container mt-auto pt5">
+        <div class="row justify-content-center">
+          
+            <div class="card">
+                <div class="card-header">
+                    Orden
+                </div>
+                <div class="col-sm-3">
+                    @orden.OrdenID
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Orden" asp-action="GuardarOrden">
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="form-label-sm" id="lblUsuario"> Producto</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="form-label-sm" id="lblUsuario"> Cantidad</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="form-label-sm" id="lblUsuario"> Precio</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="form-label-sm" id="lblUsuario"> Sub-Total</label>
+                            </div>
+
+                        </div>
+                        <hr />
+                        <div class="row">
+
+                        
+                                @for (var item = 0; item < ViewBag.OrdenDetalle.Count; item++)
+                                   {
+                                    var producto = ViewBag.OrdenDetalle[item];
+                                    <div class="row">
+                                        @*  <div class="col-sm-4 visually-hidden">
+                                <label class="form-label-sm" id="lblID" name="ProductoID" >  @item.ProductoID </label> *@
+                                        <input type="hidden" id="hidProductoID" name="ProductoID" value="@producto.ProductoID" />
+                                        <input type="hidden" id="hidUsuarioID" name="UsuarioID" value="@ViewBag.UsuarioID" />
+                                        @* </div> *@
+                                        <div class="col-sm-3">
+                                            <label class="form-label-sm" id="lblNombre">  @producto.Nombre </label>
+
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="number" class="form-control form-control-sm"  name="Cantidad[@item]" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-label-sm" id="lblPrecio">   @producto.Precio </label>
+
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-label-sm" id="lblPrecio">   @producto.Precio </label>
+                                        </div>
+
+                                    </div>
+                                }
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <a href="/VerDetalleOrden?UsuarioID=@ViewBag.UsuarioID" class="btn-secondary">Ver Detalle</a>
+                          
+                            </div>
+                        </div>
+
+                    </form>
+                
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

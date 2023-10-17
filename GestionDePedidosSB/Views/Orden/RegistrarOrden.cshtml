@@ -1,0 +1,155 @@
+﻿@model GestionDePedidosSB.Models.Orden
+
+@* @{
+    Layout = null;
+} *@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registrar Pedido</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+</head>
+<body>
+    <div class="container mt-auto pt5">
+        <div class="row justify-content-center">
+            <div class="card-header">
+                Bienvenido @ViewData["NombreUsuario"]
+            </div>
+                <div class="card">
+                <div class="card-header">
+                    Registrar Pedido
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Orden" asp-action="GuardarOrden">
+                   
+                       
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label class="form-label-sm" id="lblUsuario" > Producto</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="form-label-sm" id="lblUsuario"> Cantidad</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="form-label-sm" id="lblUsuario"> Precio</label>
+                                </div>
+                                <div class="col-sm-4">
+                                
+                                </div>
+                              
+                            </div>
+                            <hr />
+                            <div class="row">
+                                
+                                @if (ViewBag.ListaUsuario.Count> 0)
+                                {
+                                @for (var item=0; item< ViewBag.ListaUsuario.Count;item ++)
+                                {
+                                    var producto = ViewBag.ListaUsuario[item];
+                                    <div class="row">
+                                       
+                                        <input type="hidden" name="ProductoID[@item]" value="@producto.ProductoID" />
+                                        <input type="hidden" name="UsuarioID" value="@ViewBag.UsuarioID" />
+
+                                        <div class="col-sm-3">
+                                            <label class="form-label-sm" id="lblNombre">  @producto.Nombre </label>
+
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="number" class="form-control form-control-sm"  name="Cantidad[@item]" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-label-sm" id="lblPrecio">   @producto.Precio </label>
+
+                                        </div>
+                                       
+
+                                    </div>
+                                   @*  @foreach (var item in ViewBag.ListaUsuario)
+                                    {
+                                        <div class="row">
+                                        
+                                            <input type="hidden" id="hidProductoID" name="ProductoID" value="@item.ProductoID" />
+                                            <input type="hidden" id="hidUsuarioID" name="UsuarioID" value="@ViewBag.UsuarioID" />
+                                          
+                                            <div class="col-sm-3">
+                                            <label class="form-label-sm" id="lblNombre">  @item.Nombre </label>
+                                               
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <input type="text" class="form-control form-control-sm" id="txCantidad" name="Cantidad" />
+                                            </div>
+                                            <div class="col-sm-3">
+                                            <label class="form-label-sm" id="lblPrecio">   @item.Precio </label>
+                                               
+                                            </div>
+                                            <div class="col-sm-3">
+                                            <button class="btn-success" type="submit" id="btnAgregar+@item.ProductoID"> Agregar</button>
+
+                                            </div>
+
+                            </div>*@
+                                    } 
+                                }
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <button type="submit" class="btn btn-primary">Realizar Pedido</button>
+                                @* <a href="/VerDetalleOrden?UsuarioID=@ViewBag.UsuarioID" class="btn-secondary">Ver Detalle</a>
+                                 <button class="btn-secondary" type="button" id="btnVerDetalleOren" data-target="#ModalVerDetalle" data-toggle="modal" data-backdrop="static"  data-keyboard="false" onclick="detalle_orden('@ViewBag.UsuarioID')">
+                                    <span >Detalle Orden</span>
+                                </button> *@
+                            </div>
+                        </div>
+                       
+                    </form>
+                 @*    <div id="myModal" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Modal Header</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Some text in the modal.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div> *@
+                  @*   <div class="row">
+                        <div class="row-cols-12">
+                            <table class="table table-bordered table-sm" id="tbProductos">
+                                <thead>
+                                    <tr class="table-light">
+                                        <td>Producto</td>
+                                        <td>Cantidad</td>
+                                        <td>Precio</td>
+                                        <td>Total</td>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div> *@
+                </div>
+            </div>
+
+        </div>
+    </div>
+   
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
